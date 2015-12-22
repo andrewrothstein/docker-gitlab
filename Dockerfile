@@ -24,3 +24,5 @@ EXPOSE 80 22
 # Default is to run runit & reconfigure
 CMD sleep 3 && gitlab-ctl reconfigure & /opt/gitlab/embedded/bin/runsvdir-start
 
+VOLUME ["/var/opt/gitlab", "/var/log/gitlab", "/etc/gitlab"]
+    
