@@ -2,13 +2,14 @@ FROM ubuntu:14.04
 MAINTAINER Andrew Rothstein <andrew.rothstein@gmail.com>
 
 # Install required packages
+ENV GITLAB_CE_VER 8.3.2-ce.0
 RUN apt-get install -qy --no-install-recommends \
       openssh-server \
       ca-certificates \
       curl \
     && curl https://packages.gitlab.com/install/repositories/gitlab/gitlab-ce/script.deb.sh | bash \
     && apt-get install -qy --no-install-recommends \
-      gitlab-ce=8.3.0-ce.0
+      gitlab-ce=$GITLAB_CE_VER
 
 # Manage SSHD through runit
 RUN mkdir -p /opt/gitlab/sv/sshd/supervise \
